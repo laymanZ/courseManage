@@ -18,6 +18,7 @@
            <button type="button" class="btn btn-primary btn-lg"  data-toggle="modal" data-target="#myModal" onclick="select();">选课</button>
            <button type="button" class="btn btn-primary btn-lg" id="course_delete" data-toggle="modal" data-target="#myModal" onclick="optionUserData(this);">退选</button>
            <button type="button" class="btn btn-primary btn-lg" id="course_find" onclick="optionUserData(this);">查询</button>
+           <button type="button" class="btn btn-primary btn-lg"  onclick="tuichu()">退出登录</button>
            <input type="text" id="s_code" placeholder="按课程号查询" style="width: 100px;">
            <input type="text" id="s_userName" placeholder="按老师工号查询" style="width: 100px;">
            <input type="text" id="s_all" placeholder="全文搜索" style="width: 80px;">
@@ -62,6 +63,11 @@ $(document).ready(function(){
 		return false;
 	})
 });
+
+function tuichu()
+{
+	window.location.href = "index.html";
+}
 function select()
 {
 	window.location.href = "student_course.html";

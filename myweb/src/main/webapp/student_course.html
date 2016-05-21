@@ -17,6 +17,7 @@
    <caption>
            <button type="button" class="btn btn-primary btn-lg" id="user_select" data-toggle="modal" data-target="#myModal" onclick="optionUserData(this);">选课</button>
            <button type="button" class="btn btn-primary btn-lg" id="user_find" onclick="optionUserData(this);">查询</button>
+           <button type="button" class="btn btn-primary btn-lg"  onclick="back()">返回</button>
            <input type="text" id="s_code" placeholder="按课程号查询" style="width: 100px;">
            <input type="text" id="s_userName" placeholder="按老师工号查询" style="width: 100px;">
            <input type="text" id="s_all" placeholder="全文搜索" style="width: 80px;">
@@ -36,6 +37,11 @@
    </tbody>
 </table>
 </div>
-
+<script type="text/javascript">
+function back()
+{
+	window.location.href = "student_main.html";
+}
+</script>
 </body>
 </html>
