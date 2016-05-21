@@ -1,6 +1,7 @@
 F:\JavaTest\myweb\src\main\java\cn\zhku\modal\Teacher.java
 F:\JavaTest\myweb\src\main\java\cn\zhku\modal\User.java
 F:\JavaTest\myweb\src\main\java\cn\zhku\servlet\AddUser.java
+F:\JavaTest\myweb\src\main\java\cn\zhku\servlet\FindPassword.java
 F:\JavaTest\myweb\src\main\java\cn\zhku\dao\DataAccessor.java
 F:\JavaTest\myweb\src\main\java\cn\zhku\servlet\LoadCourses.java
 F:\JavaTest\myweb\src\main\java\cn\zhku\servlet\LoadStudentCourses.java

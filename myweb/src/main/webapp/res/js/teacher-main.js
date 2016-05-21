@@ -8,24 +8,18 @@ var operateType = "";
 //存放搜索对象
 var searchUsers = searchUsers || {};
 //用户构造方法
-var User = {
-        Create:function(code,name,sex,passWord,age,type){
-            this.code = code;
-            this.name = name;
-            this.sex = sex;
-            this.passWord = passWord;
-            this.age = age;
-            this.type = type;
+var Course = {
+        Create:function(courseCode,courseName,hadSNum,mostSNum,teacherCode,xueFen){
+            this.courseCode = courseCode;
+            this.courseName = courseName;
+            this.hadSNum = hadSNum;
+            this.mostSNum = mostSNum;
+            this.teacherCode = teacherCode;
+            this.xueFen = xueFen;
         },
-        //添加用户
-        addUserData:function(){
-            if(this.code != ""){
-                users[this.code] = this;                
-            }
-        },
-        //删除用户
+        //删除课程
         deleteUserData:function (){
-        	var data = {code:this.code}
+        	var data = {courseCode:this.courseCode}
         	$.ajax({
       	  	  url : 'delUser',
       	  	  type : "POST" ,
@@ -38,18 +32,6 @@ var User = {
       	  	  }
       	    }); 
         },
-        //编辑用户
-        editUserData:function(){
-            for(var i in users){
-                if(this.code == users[i].code){
-                    users[i].name = this.name;
-                    users[i].sex = this.sex;
-                    users[i].passWord = this.passWord;
-                    users[i].type = this.type;
-                    users[i].age = this.age;
-                }
-            }
-        },
         //查找用户
         findUserData:function(data)
         {
@@ -59,11 +41,11 @@ var User = {
             for(var i in users)
             {
             	
-                if(data.code.indexOf(users[i].code) >= 0 || 
-                        data.name.indexOf(users[i].name) >= 0)
+                if(data.courseCode.indexOf(users[i].courseCode) >= 0 || 
+                        data.courseName.indexOf(users[i].courseName) >= 0)
                 {
                 
-                    searchUsers[users[i].code] = users[i];
+                    searchUsers[users[i].courseCode] = users[i];
                     refreshDatas(searchUsers);
                    
                 }
@@ -94,10 +76,9 @@ function loadUserDatas(){
 				var us = models[0];
 				for(k in us){
 					var u = us[k];
-					var initUser = New(User,[u.code,u.name,u.sex,u.password,u.age,u.type]);
+					var initUser = New(Course,[u.courseCode,u.courseName,u.hadSNum,u.mostSNum,u.teacherCode,u.xueFen]);
 				    users[k] = initUser;
 				}
-				//$('#myModal').modal('hide');
 				addRowData(users);
 				refreshDatas(users);              
 			}
@@ -120,13 +101,11 @@ function addRowData (datas){
         }else{
             color = "warning";
         }
-        html = html +  "<tr class='"+ color +"'><td style='width:30px;'><input type='checkbox'></td><td id='code'>"
-                + datas[i].code +"</td><td id='userName'>"
-                + datas[i].name +"</td><td id='sex'>"
-                + datas[i].sex +"</td><td id='passWord'>"
-                + datas[i].passWord +"</td><td id='age'>"
-                + datas[i].age +"</td><td id='type'>"
-                + datas[i].type +"</td>" 
+        html = html +  "<tr class='"+ color +"'><td style='width:30px;'><input type='checkbox'></td><td id='courseCode'>"
+                + datas[i].courseCode +"<td id='courseName'>"
+                + datas[i].courseName +"</td><td id='xueFen'>"
+                + datas[i].xueFen +"</td><td id='mostSNum'>"
+                + datas[i].mostSNum +"</td>" 
                 +"</tr>";
                 
         flag = !flag;//颜色转换
@@ -150,7 +129,7 @@ function collectionRowData(param){
         var temp =  tdElement[i].textContent;
         userArr[i-1] = temp;
     }
-    var user = New(User,userArr);
+    var user = New(Course,userArr);
    // alert(user);
     return user;
 }
@@ -183,10 +162,10 @@ function optionUserData(param){
         var s_all=  document.getElementById("s_all").value;
         //搜索数据
         var s_data = s_data || {};
-        s_data.code = s_code;
-        s_data.name = s_userName;
+        s_data.courseCode = s_code;
+        s_data.courseName = s_userName;
         s_data.all = s_all;
-        var user = New(User,[]);
+        var user = New(Course,[]);
         user.findUserData(s_data);
     }else{
         

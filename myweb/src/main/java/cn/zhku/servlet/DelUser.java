@@ -30,17 +30,24 @@ public class DelUser extends HttpServlet
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-		String code = request.getParameter("code");
-		String sql = "delete from User x where x.code=:code";
+		String courseCode = request.getParameter("courseCode");
+		String sql = "delete from Course x where x.courseCode=:courseCode";
 		
 		DataAccessor.getManager().getTransaction().begin();// 开启事务
 		Query q = DataAccessor.getManager().createQuery(sql);
-		q.setParameter("code", code);
+		q.setParameter("courseCode", courseCode);
 		q.executeUpdate();
 		DataAccessor.getManager().getTransaction().commit();// 提交事务
 		
 		
-	     
+		String sql2 = "delete from CourseOfStudent x where x.courseCode=:courseCode";
+		DataAccessor.getManager().getTransaction().begin();// 开启事务
+		Query q2 = DataAccessor.getManager().createQuery(sql2);
+		q2.setParameter("courseCode", courseCode);
+		q2.executeUpdate();
+		DataAccessor.getManager().getTransaction().commit();// 提交事务
+		
+		
 		String msg = "删除成功！";
 		JSONObject obj = new JSONObject();
 		obj.put("msg", msg);

@@ -139,6 +139,26 @@ select{
 	</div>
 </div>
 </div>
+
+
+<div class="modal fade" id="mymodal">
+    <div class="modal-dialog">
+        <div class="modal-content"  style = "margin:auto;width:380px;margin-top:200px">
+        	<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+				<h4 class="modal-title">教师开课</h4>
+			</div>
+			<div class="modal-body">
+				<p id="contentOpen"></p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary" data-dismiss="modal">确认</button>
+			</div>
+		</div>
+	</div>
+</div><!-- /.modal -->
+
+
 </body>
 <script type="text/javascript">
 $('document').ready(function(){
@@ -161,12 +181,24 @@ $('document').ready(function(){
 	  	  data : data,
 	  	  success : function(data){
    	  		 data=eval(data);
-  	  		 alert(data.msg);
-  	  		 window.location.href = "teacher_main.html";
+  	  		 if(data.msg == "该课程号已存在")
+  	  		 {
+  	  		 	$("p#contentOpen").html(data.msg);
+	  	     	$("#mymodal").modal("toggle");
+	  	     	return false;
+  	  		 }
+  	  		 else
+  	  		 { 
+  	  		 	alert(data.msg); 
+  	  		 	
+	  	     	window.location.href = "teacher_main.html";
+  	  		 }
+  	  		
 	  	  },
 	  	  error : function(data) {  
 	  		  $.messager.alert("提示", "操作失败", "info");  
 	  	   }  
+	  	   
 	    }); 
 		return false;
 	})

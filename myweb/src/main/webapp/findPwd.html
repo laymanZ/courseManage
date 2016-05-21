@@ -4,18 +4,19 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0" />
 <title>课程管理系统找回密码</title>
-
-<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="res/bootstrap-3.3.5-dist/css/bootstrap.min.css" />
+   <script src="res/js/jquery/jquery-1.9.1.js"></script>
+   <script src="res/bootstrap-3.3.5-dist/js/bootstrap.js"></script>
 <style type = "text/css">
 
 
 .leftBtn{
-	margin-top:15px;
+	margin-top:20px;
 	float:left;
 	margin-left:18px;
 }
 .rightBtn{
-	margin-top:15px;
+	margin-top:20px;
 	float:right;
 	margin-right:68px;
 }
@@ -46,31 +47,86 @@ input{
 <div class="box">
 		<div class="login-box">
 			<div class="login-title text-center">
-				<h1>请输入你的工号</h1>
+				<h1>请输入你的工号或学号</h1>
 			</div>
 			<br/><br/>
 			<div class="login-content ">
-			<div class="form">
+			<div class="form" id="findPwd">
 			<form action="login" method="post">
 				<div class="form-group">
 					<div class="col-xs-12  ">
 						<div class="input-group">
 							<span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-							<input type="text" id="username" name="username" class="form-control" placeholder="工号">
+							<input type="text" id="code" name="code" class="form-control" placeholder="工号/学号">
 						</div>
 					</div>
 				</div>
-				<div class = "leftBtn">
+			</form>
+			<div class = "leftBtn">
 				<div class="form-group form-actions">
 					<div class="col-xs-4 col-xs-offset-4 ">
-						<button type="submit" class="btn btn-large btn-info"><span class="glyphicon glyphicon-off"></span>确定</button>
+						<button class="btn btn-large btn-info" onclick = "back()">返回</button>
 					</div>
 				</div>
 				</div>
-			</form>
+			<div class = "rightBtn">
+				<div class="form-group form-actions">
+					<div class="col-xs-4 col-xs-offset-4 ">
+						<button  class="btn btn-large btn-info" id="sureFind">确定</button>
+					</div>
+				</div>
+				</div>
 			</div>
 		</div>
 	</div>
 </div>
 </div>
+
+<div class="modal fade" id="mymodal">
+    <div class="modal-dialog">
+        <div class="modal-content"  style = "margin:auto;width:380px;margin-top:200px">
+        	<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+				<h4 class="modal-title">密码找回</h4>
+			</div>
+			<div class="modal-body">
+				<p id="contentPwd"></p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary" data-dismiss="modal">确认</button>
+			</div>
+		</div>
+	</div>
+</div><!-- /.modal -->
+
+
 </body>
+<script src="res/js/jquery/jquery-1.9.1.js"></script>
+   <script src="res/bootstrap-3.3.5-dist/js/bootstrap.js"></script>
+<script type="text/javascript">
+	
+	$(document).ready(function()
+	{
+	$('#sureFind').click(function()
+	{
+		var data = {code:$("#code").val()}
+		$.ajax({
+	  	  url : 'findPassword',
+	  	  type : "POST" ,
+	  	  dataType:'json',                	       
+	  	  data : data,
+	  	  success : function(data)
+	  	  {
+	  	  	  $("p#contentPwd").html(data.msg);
+	  	      $("#mymodal").modal("toggle");
+	  	  }
+	 	}); 
+		return false;
+	});
+});
+	function back()
+	{
+		window.location.href = "index.html";
+	}
+</script>
+</html>
