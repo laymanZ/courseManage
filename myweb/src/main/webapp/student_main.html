@@ -17,9 +17,9 @@
    <caption>
            <button type="button" class="btn btn-primary btn-lg"  data-toggle="modal" data-target="#myModal" onclick="select();">选课</button>
            <button type="button" class="btn btn-primary btn-lg" id="course_delete" data-toggle="modal" data-target="#myModal" onclick="optionUserData(this);">退选</button>
-           <button type="button" class="btn btn-primary btn-lg" id="user_find" onclick="optionUserData(this);">查询</button>
-           <input type="text" id="s_code" placeholder="按学号查询" style="width: 80px;">
-           <input type="text" id="s_userName" placeholder="按姓名查询" style="width: 80px;">
+           <button type="button" class="btn btn-primary btn-lg" id="course_find" onclick="optionUserData(this);">查询</button>
+           <input type="text" id="s_code" placeholder="按课程号查询" style="width: 100px;">
+           <input type="text" id="s_userName" placeholder="按老师工号查询" style="width: 100px;">
            <input type="text" id="s_all" placeholder="全文搜索" style="width: 80px;">
    </caption>
    <thead>
@@ -44,11 +44,6 @@
 $(document).ready(function(){
 
 	$('#btnSave').click(function(){
-	/*	var data = {'code':$("#m_code").val(),
-				'userName':$("#m_userName").val(),
-				'sex':$("#m_sex").val(),
-				'passWord':$("#m_passWord").val(),
-				'age':$("#m_age").val()}*/
 				var data = {code:$("#m_code").val(),
 						userName:$("#m_userName").val(),
 						sex:$("#m_sex").val(),

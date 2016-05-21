@@ -54,17 +54,22 @@ public class SelectCourse extends HttpServlet
 			response.getWriter().print(ms);
 			return;
 		}
-			
-		String sql2 = "select x from CourseOfStudent x where x.courseCode=:courseCode";
+		HttpSession session= request.getSession();
+	    String studentCode = (String) session.getAttribute("sCode");
+		String studentName = (String)session.getAttribute("sName");	
+		
+		String sql2 = "select x from CourseOfStudent x where x.courseCode=:courseCode and x.code=:code";
 		Query q2 = DataAccessor.getManager().createQuery(sql2);
 		q2.setParameter("courseCode", courseCode);
+		q2.setParameter("code", studentCode);
+		
+		
+		
+		
 		Boolean isNotExist = q2.getResultList().isEmpty();
 		if(isNotExist)
 		{
 			String courseName = c.getCourseName();
-			HttpSession session= request.getSession();
-		    String studentCode = (String) session.getAttribute("sCode");
-			String studentName = (String)session.getAttribute("sName");
 			Long xueFen = c.getXueFen();
 			String teacherCode = c.getTeacherCode();
 			CourseOfStudent cos = new CourseOfStudent(studentCode, studentName, courseName, courseCode, xueFen, teacherCode);

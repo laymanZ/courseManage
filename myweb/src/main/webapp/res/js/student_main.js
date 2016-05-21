@@ -45,10 +45,11 @@ var CourseOfStudent = {
         },
         //查找用户
         findUserData:function(data){
+        
         searchUsers = {};
             for(var i in users){
-                if(data.code.indexOf(users[i].code) >= 0 || 
-                        data.name.indexOf(users[i].name) >= 0){
+                if(data.courseCode.indexOf(users[i].courseCode) >= 0 || 
+                        data.teacherCode.indexOf(users[i].teacherCode) >= 0){
                     searchUsers[users[i].code] = users[i];
                     refreshDatas(searchUsers);
                 }
@@ -164,16 +165,19 @@ function optionUserData(param){
             inputElements[i].value = user[temp];
         }
         user.editUserData();
-    }else if(optionType == "user_find"){
+    }else if(optionType == "course_find"){
+    	
         var s_code =  document.getElementById("s_code").value;
         var s_userName =  document.getElementById("s_userName").value;
         var s_all=  document.getElementById("s_all").value;
         //搜索数据
         var s_data = s_data || {};
-        s_data.code = s_code;
-        s_data.name = s_userName;
+        s_data.courseCode = s_code;
+        s_data.teacherCode = s_userName;
         s_data.all = s_all;
-        var user = New(User,[]);
+        
+        
+        var user = New(CourseOfStudent,[]);
         user.findUserData(s_data);
     }else{
         

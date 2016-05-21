@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.json.JSONObject;
 
@@ -31,12 +32,16 @@ public class DelSelectedCourse extends HttpServlet
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
+		HttpSession session= request.getSession();
+	    String studentCode = (String) session.getAttribute("sCode");
+		
 		String courseCode = request.getParameter("courseCode");
-		String sql = "delete from CourseOfStudent x where x.courseCode=:courseCode";
+		String sql = "delete from CourseOfStudent x where x.courseCode=:courseCode and x.code=:code";
 		
 		DataAccessor.getManager().getTransaction().begin();// 开启事务
 		Query q = DataAccessor.getManager().createQuery(sql);
 		q.setParameter("courseCode", courseCode);
+		q.setParameter("code", studentCode);
 		q.executeUpdate();
 		DataAccessor.getManager().getTransaction().commit();// 提交事务
 		

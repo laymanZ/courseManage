@@ -13,7 +13,6 @@ import javax.servlet.http.HttpSession;
 import org.json.JSONArray;
 
 import cn.zhku.dao.DataAccessor;
-import cn.zhku.modal.CourseOfStudent;
 
 /**
  * 从数据库加载课程

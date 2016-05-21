@@ -2,7 +2,7 @@
  * 
  */
 //存放所有课程
-var courses = courses || {};
+var users = users || {};
 //操作类型
 var operateType = "";
 //存放搜索对象
@@ -34,22 +34,23 @@ var Course = {
         },
         //编辑用户
         editUserData:function(){
-            for(var i in courses){
-                if(this.courseCode == courses[i].courseCode){
-                    courses[i].courseName = this.courseName;
-                    courses[i].hadSNum = this.hadSNum;
-                    courses[i].mostSNum = this.mostSNum;
-                    courses[i].teacherCode = this.teacherCode;
-                    courses[i].xueFen = this.xueFen;
+            for(var i in users){
+                if(this.courseCode == users[i].courseCode){
+                    users[i].courseName = this.courseName;
+                    users[i].hadSNum = this.hadSNum;
+                    users[i].mostSNum = this.mostSNum;
+                    users[i].teacherCode = this.teacherCode;
+                    users[i].xueFen = this.xueFen;
                 }
             }
         },
         //查找用户
         findUserData:function(data){
-            for(var i in courses){
-                if(data.code.indexOf(courses[i].code) >= 0 || 
-                        data.name.indexOf(courses[i].name) >= 0){
-                    searchUsers[courses[i].code] = courses[i];
+        searchUsers = {};
+            for(var i in users){
+                if(data.courseCode.indexOf(users[i].courseCode) >= 0 || 
+                        data.teacherCode.indexOf(users[i].teacherCode) >= 0){
+                    searchUsers[users[i].teacherCode] = users[i];
                     refreshDatas(searchUsers);
                 }
             }
@@ -165,10 +166,10 @@ function optionUserData(param){
         var s_all=  document.getElementById("s_all").value;
         //搜索数据
         var s_data = s_data || {};
-        s_data.code = s_code;
-        s_data.name = s_userName;
+        s_data.courseCode = s_code;
+        s_data.teacherCode = s_userName;
         s_data.all = s_all;
-        var user = New(User,[]);
+        var user = New(Course,[]);
         user.findUserData(s_data);
     }else{
         

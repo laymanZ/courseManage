@@ -66,6 +66,9 @@ public class AddUser extends HttpServlet
 			else
 			{
 				u = new Student( code,  name,  sex,  age,  password, info);
+				HttpSession hs2 = request.getSession(); 
+				hs2.setAttribute("sCode", u.getCode());
+				hs2.setAttribute("sName", u.getName());
 			}
 			
 			// 插入一条记录
