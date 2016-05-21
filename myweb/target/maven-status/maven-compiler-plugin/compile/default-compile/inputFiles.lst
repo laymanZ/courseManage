@@ -1,0 +1,17 @@
+F:\JavaTest\myweb\src\main\java\cn\zhku\modal\Teacher.java
+F:\JavaTest\myweb\src\main\java\cn\zhku\modal\User.java
+F:\JavaTest\myweb\src\main\java\cn\zhku\servlet\AddUser.java
+F:\JavaTest\myweb\src\main\java\cn\zhku\dao\DataAccessor.java
+F:\JavaTest\myweb\src\main\java\cn\zhku\servlet\LoadCourses.java
+F:\JavaTest\myweb\src\main\java\cn\zhku\servlet\LoadStudentCourses.java
+F:\JavaTest\myweb\src\main\java\cn\zhku\modal\Course.java
+F:\JavaTest\myweb\src\main\java\cn\zhku\servlet\DelUser.java
+F:\JavaTest\myweb\src\main\java\cn\zhku\servlet\Login.java
+F:\JavaTest\myweb\src\main\java\cn\zhku\servlet\AddCourse.java
+F:\JavaTest\myweb\src\main\java\cn\zhku\servlet\DelSelectedCourse.java
+F:\JavaTest\myweb\src\main\java\cn\zhku\servlet\LoadUsers.java
+F:\JavaTest\myweb\src\main\java\cn\zhku\servlet\EditUser.java
+F:\JavaTest\myweb\src\main\java\cn\zhku\servlet\SelectCourse.java
+F:\JavaTest\myweb\src\main\java\cn\zhku\modal\Student.java
+F:\JavaTest\myweb\src\main\java\cn\zhku\modal\CourseOfStudent.java
+F:\JavaTest\myweb\src\main\java\cn\zhku\servlet\AddSelectCourse.java

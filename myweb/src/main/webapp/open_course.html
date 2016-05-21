@@ -1,0 +1,175 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0" />
+<title>教师开课</title>
+
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="res/bootstrap-3.3.5-dist/css/bootstrap.min.css" />
+   <script src="res/js/jquery/jquery-1.9.1.js"></script>
+   <script src="res/bootstrap-3.3.5-dist/js/bootstrap.js"></script>
+<script type="text/javascript" src="res/js/student_course.js"></script>
+<style type = "text/css">
+
+
+.leftBtn{
+	margin-top:15px;
+	float:left;
+	margin-left:18px;
+}
+.rightBtn{
+	margin-top:15px;
+	float:right;
+	margin-right:68px;
+}
+h1{
+	font-size:50px;
+	color:white;
+	font-weight:bold;
+}
+input{
+	min-height:45px;
+	border-radius:15px;
+}
+select{
+	min-height:45px;
+	border-radius:15px;
+}
+.container{
+	
+	padding-top:190px;
+	max-width:400px;
+	margin:auto;
+	font-color:white;
+	font-family: Muli,'Helvetica Neue','Hiragino Sans GB','WenQuanYi Micro Hei','Microsoft Yahei',sans-serif !important;
+}
+.bg
+{
+	width: 100%;
+	height: 100%;
+	top:0;
+	z-index: -1;
+	position: absolute;
+	
+}
+.bg img
+{
+	display: block;
+	outline: none;
+	border:0;
+	height: 100%;
+	width: 100%;
+}
+
+
+</style>
+
+</head>
+<body>
+<div class="bg">
+    <img src="image/image2.jpg" />
+</div>
+
+<div class = "container">
+<div class="box">
+		<div class="login-box">
+			<div class="login-title text-center">
+				<h1>欢迎</h1>
+			</div>
+			<br/>
+			<div class="login-content ">
+			<div class="form">
+			<form id="createCourse">
+				<div class="form-group">
+					<div class="col-xs-12  ">
+						<div class="input-group">
+							<span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+							<input type="text" id="courseCode" name="courseCode" class="form-control" placeholder="课程号" required="required">
+						</div>
+					</div>
+				</div>
+				
+				<br/><br/><br/>
+				<div class="form-group">
+					<div class="col-xs-12  ">
+						<div class="input-group">
+							<span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+							<input type="text" id="courseName" name="courseName" class="form-control" placeholder="课程名" required="required">
+						</div>
+					</div>
+				</div>
+				<br/><br/>
+				<div class="form-group">
+					<div class="col-xs-12  ">
+						<div class="input-group">
+							<span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+							<input type="text" id="credit" name="credit" class="form-control" placeholder="学分" required="required">
+						</div>
+					</div>
+				</div>
+				<br/><br/>
+				<div class="form-group">
+					<div class="col-xs-12  ">
+						<div class="input-group">
+							<span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+							<input type="text" id="mostNum" name="mostNum" class="form-control" placeholder="可选人数" required="required">
+						</div>
+					</div>
+				</div>
+				<br/>
+					
+				<div class = "rightBtn">
+					<div class="form-group form-actions">
+						<div class="col-xs-4 col-xs-offset-4 ">
+						<button type="reset" class="btn btn-large btn-info"><span class="glyphicon glyphicon-off"></span> 重置</button>
+						</div>
+					</div>
+				</div>
+			</form>
+				<div class = "leftBtn">
+					<div class="form-group form-actions">
+						<div class="col-xs-4 col-xs-offset-4 ">
+						<button id= 'btnCreate' type="button" class="btn btn-large btn-info"><span class="glyphicon glyphicon-off"></span>创建</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+</body>
+<script type="text/javascript">
+$('document').ready(function(){
+	//bootstrap模态框事件
+	//$('#myModal').on('hide.bs.modal', function () {
+	    // 执行一些动作...
+		//alert('hide');
+	 // loadUserDatas();
+	//});
+	
+	$('#btnCreate').click(function(){
+		var data = {courseCode:$("#courseCode").val(),
+						courseName:$("#courseName").val(),
+						credit:$("#credit").val(),
+						mostNum:$("#mostNum").val()}
+		$.ajax({
+	  	  url : 'addCourse',
+	  	  type : "POST" ,
+	  	  dataType:'json',                	       
+	  	  data : data,
+	  	  success : function(data){
+   	  		 data=eval(data);
+  	  		 alert(data.msg);
+  	  		 window.location.href = "teacher_main.html";
+	  	  },
+	  	  error : function(data) {  
+	  		  $.messager.alert("提示", "操作失败", "info");  
+	  	   }  
+	    }); 
+		return false;
+	})
+});
+</script>
+</html>

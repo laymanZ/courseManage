@@ -1,0 +1,222 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0" />
+<title>课程管理系统注册</title>
+
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="res/bootstrap-3.3.5-dist/css/bootstrap.min.css" />
+   <script src="res/js/jquery/jquery-1.9.1.js"></script>
+   <script src="res/bootstrap-3.3.5-dist/js/bootstrap.js"></script>
+<script type="text/javascript" src="res/js/teacher-main.js"></script>
+<style type = "text/css">
+
+
+.leftBtn{
+	margin-top:15px;
+	float:left;
+	margin-left:18px;
+}
+.rightBtn{
+	margin-top:15px;
+	float:right;
+	margin-right:68px;
+}
+h1{
+	color:white;
+	font-weight:bold;
+}
+input{
+	min-height:45px;
+	border-radius:15px;
+}
+select{
+	min-height:45px;
+	border-radius:15px;
+}
+.container{
+	
+	padding-top:190px;
+	max-width:400px;
+	margin:auto;
+	font-color:white;
+	font-family: Muli,'Helvetica Neue','Hiragino Sans GB','WenQuanYi Micro Hei','Microsoft Yahei',sans-serif !important;
+}
+.bg
+{
+	width: 100%;
+	height: 100%;
+	top:0;
+	z-index: -1;
+	position: absolute;
+	
+}
+.bg img
+{
+	display: block;
+	outline: none;
+	border:0;
+	height: 100%;
+	width: 100%;
+}
+
+
+</style>
+
+</head>
+<body>
+<div class="bg">
+    <img src="image/image1.jpg" />
+</div>
+
+<div class = "container">
+<div class="box">
+		<div class="login-box">
+			<div class="login-title text-center">
+				<h1>欢迎注册</h1>
+			</div>
+			<div class="login-content ">
+			<div class="form">
+			<form id="regist">
+			<div class="form-group">
+					<div class="col-xs-12  ">
+						<div class="input-group">
+							<span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+							<input type="text" id="gongHao" name="gongHao" class="form-control" placeholder="工号/学号" required="required">
+						</div>
+					</div>
+				</div>
+				<br/><br/><br/>
+				<div class="form-group">
+					<div class="col-xs-12  ">
+						<div class="input-group">
+							<span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+							<input type="text" id="username" name="username" class="form-control" placeholder="姓名" required="required">
+						</div>
+					</div>
+				</div>
+				<br/><br/>
+				<div class="form-group">
+					<div class="col-xs-12  ">
+						<div class="input-group">
+							<span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+              				<select class="form-control" id="m_sex">
+		        			 <option>男</option>
+		         			 <option>女</option>
+		      				</select>
+						</div>
+					</div>
+				</div>
+				<br/><br/>
+				<div class="form-group">
+					<div class="col-xs-12  ">
+						<div class="input-group">
+							<span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+              				<select class="form-control" id="m_type">
+		         			<option>老师</option>
+		         			<option>学生</option>
+		      				</select>
+						</div>
+					</div>
+				</div>
+				<br/><br/>
+				<div class="form-group">
+					<div class="col-xs-12  ">
+						<div class="input-group">
+							<span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+							<input type="text" id="age" name="age" class="form-control" placeholder="年龄" required="required">
+						</div>
+					</div>
+				</div>
+				<br/><br/>
+				<div class="form-group">
+					<div class="col-xs-12  ">
+						<div class="input-group">
+							<span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+							<input type="password" id="password" name="password" class="form-control" placeholder="密码" required="required">
+						</div>
+					</div>
+				</div>
+				<br/><br/>
+				<div class="form-group">
+					<div class="col-xs-12  ">
+						<div class="input-group">
+							<span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+							<input type="password" id="re_password" name="re_password" class="form-control" placeholder="请再次输入密码" required="required">
+						</div>
+					</div>
+				</div>
+				<br/>
+					
+				<div class = "rightBtn">
+					<div class="form-group form-actions">
+						<div class="col-xs-4 col-xs-offset-4 ">
+						<button type="reset" class="btn btn-large btn-info"><span class="glyphicon glyphicon-off"></span> 重置</button>
+						</div>
+					</div>
+				</div>
+			</form>
+				<div class = "leftBtn">
+					<div class="form-group form-actions">
+						<div class="col-xs-4 col-xs-offset-4 ">
+						<button id= 'btnRegist' type="button" class="btn btn-large btn-info"><span class="glyphicon glyphicon-off"></span> 注册</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+</body>
+<script type="text/javascript">
+$('document').ready(function(){
+	//bootstrap模态框事件
+	//$('#myModal').on('hide.bs.modal', function () {
+	    // 执行一些动作...
+		//alert('hide');
+	 // loadUserDatas();
+	//});
+	
+	$('#btnRegist').click(function(){
+	 	var password = $("#password").val();
+		var re_password = $('#re_password').val();
+		if(password != re_password)
+		{
+			alert("两次的密码不同");
+			return false;
+		}
+		var data = {code:$("#gongHao").val(),
+						name:$("#username").val(),
+						sex:$("#m_sex").val(),
+						password:password,
+						age:$("#age").val(),
+						type:$("#m_type").val()}
+		$.ajax({
+	  	  url : 'addUser',
+	  	  type : "POST" ,
+	  	  dataType:'json',                	       
+	  	  data : data,
+	  	  success : function(data){
+   	  		 data=eval(data);
+  	  		 alert(data.msg);
+  	  		 var type2 = data.type2.trim();
+  	  		 if(type2 == "老师")
+  	  		 {
+  	  		 	window.location.href = "teacher_main.html";
+  	  		 }
+  	  		 else
+  	  		 	window.location.href = "student_main.html";
+  	  		 //loadUserDatas();
+	  		//alert(data);
+	  	  },
+	  	  error : function(data) {  
+	  		  $.messager.alert("提示", "操作失败", "info");  
+	  	   }  
+	    }); 
+		return false;
+	})
+});
+</script>
+</html>

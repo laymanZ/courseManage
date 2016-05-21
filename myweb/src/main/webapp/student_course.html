@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- Bootstrap -->
+	<link rel="stylesheet" type="text/css" href="res/bootstrap-3.3.5-dist/css/bootstrap.min.css" />
+   <script src="res/js/jquery/jquery-1.9.1.js"></script>
+   <script src="res/bootstrap-3.3.5-dist/js/bootstrap.js"></script>
+<script type="text/javascript" src="res/js/student_course.js"></script>
+<title>学生端-选课管理</title>
+
+</head>
+<body onload="loadUserDatas()">
+<div class="container">
+<table class="table" id="table">
+   <caption><h2>学生端-选课管理</h2></caption>
+   <caption>
+           <button type="button" class="btn btn-primary btn-lg" id="user_select" data-toggle="modal" data-target="#myModal" onclick="optionUserData(this);">选课</button>
+           <button type="button" class="btn btn-primary btn-lg" id="user_find" onclick="optionUserData(this);">查询</button>
+           <input type="text" id="s_code" placeholder="按学号查询" style="width: 80px;">
+           <input type="text" id="s_userName" placeholder="按姓名查询" style="width: 80px;">
+           <input type="text" id="s_all" placeholder="全文搜索" style="width: 80px;">
+   </caption>
+   <thead>
+      <tr>
+      	 <th>序号</th>
+         <th>课程编号</th>
+         <th>课程名</th>
+         <th>老师工号</th>
+         <th>学分</th>
+         <th>可选人数</th>
+         <th>已选人数</th>
+      </tr>
+   </thead>
+   <tbody id="tbody">
+   </tbody>
+</table>
+</div>
+
+</body>
+</html>
