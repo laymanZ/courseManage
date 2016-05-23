@@ -50,7 +50,8 @@ var Course = {
             for(var i in users){
                 if(data.courseCode.indexOf(users[i].courseCode) >= 0 || 
                         data.teacherCode.indexOf(users[i].teacherCode) >= 0){
-                    searchUsers[users[i].teacherCode] = users[i];
+                       //alert(i);
+                    searchUsers[users[i].courseCode] = users[i];
                     refreshDatas(searchUsers);
                 }
             }
