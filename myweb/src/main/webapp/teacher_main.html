@@ -7,13 +7,13 @@
    <script src="res/js/jquery/jquery-1.9.1.js"></script>
    <script src="res/bootstrap-3.3.5-dist/js/bootstrap.js"></script>
 <script type="text/javascript" src="res/js/teacher-main.js"></script>
-<title>教师端-用户管理</title>
+<title>教师端-课程管理</title>
 
 </head>
 <body onload="loadUserDatas()">
 <div class="container">
 <table class="table" id="table">
-   <caption><h2>教师端-用户管理</h2></caption>
+   <caption><h2>教师端-课程管理</h2></caption>
    <caption>
    			<button type="button" class="btn btn-primary btn-lg"  data-toggle="modal" data-target="#myModal" onclick="openCourse();">开课</button>
            <button type="button" class="btn btn-primary btn-lg" id="user_delete" onclick="optionUserData(this);">删除</button>
@@ -106,6 +106,7 @@ $(document).ready(function(){
    	  		 data=eval(data);
   	  		 $("p#contentEdit").html(data.msg);
 	  	     $("#mymodal2").modal("toggle");
+	  	     loadUserDatas();
 	  	  },
 	  	  error : function(data) {  
 	  		  $.messager.alert("提示", "操作失败", "info");  

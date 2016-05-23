@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.json.JSONObject;
 
@@ -39,10 +40,14 @@ public class EditUser extends HttpServlet
 		Long xueFen = Long.parseLong(request.getParameter("xueFen"));
 		Long mostSNum = Long.parseLong(request.getParameter("mostSNum"));
 		
-		String sql = "select x from Course x where x.courseCode=:courseCode";
+		
+		 HttpSession session= request.getSession();
+	        String teacherCode = (String) session.getAttribute("tCode");
+		String sql = "select x from Course x where x.courseCode=:courseCode and x.teacherCode=:teacherCode";
 		
 		Query q = DataAccessor.getManager().createQuery(sql);
 		q.setParameter("courseCode", courseCode);
+		q.setParameter("teacherCode", teacherCode);
 		Boolean isNotExist = q.getResultList().isEmpty();
 		if(isNotExist)
 		{
