@@ -9,14 +9,12 @@ var operateType = "";
 var searchUsers = searchUsers || {};
 //用户构造方法
 var Course = {
-        Create:function(courseCode,courseName,hadSNum,mostSNum,teacherCode,xueFen){
+        Create:function(courseCode,courseName,xueFen,mostSNum){
             this.courseCode = courseCode;
             this.courseName = courseName;
-            this.hadSNum = hadSNum;
-            this.mostSNum = mostSNum;
-            this.teacherCode = teacherCode;
             this.xueFen = xueFen;
-        },
+            this.mostSNum = mostSNum;
+             },
         //删除课程
         deleteUserData:function (){
         	var data = {courseCode:this.courseCode}
@@ -76,7 +74,7 @@ function loadUserDatas(){
 				var us = models[0];
 				for(k in us){
 					var u = us[k];
-					var initUser = New(Course,[u.courseCode,u.courseName,u.hadSNum,u.mostSNum,u.teacherCode,u.xueFen]);
+					var initUser = New(Course,[u.courseCode,u.courseName,u.xueFen,u.mostSNum]);
 				    users[k] = initUser;
 				}
 				addRowData(users);
@@ -155,7 +153,7 @@ function optionUserData(param){
             var temp = inputElements[i].id.substring(2,inputElements[i].id.length)
             inputElements[i].value = user[temp];
         }
-        user.editUserData();
+        //user.editUserData();
     }else if(optionType == "user_find"){
         var s_code =  document.getElementById("s_code").value;
         var s_userName =  document.getElementById("s_userName").value;

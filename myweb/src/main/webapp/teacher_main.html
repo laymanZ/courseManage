@@ -51,13 +51,13 @@
          <form id='form'>
          <div class="modal-body" id="modal-body">
          	<label for="name">课程号:</label>
-              <input type="text" class="form-control" id="m_code" placeholder="请输入课程号作为标识">
+              <input type="text" class="form-control" id="m_courseCode" placeholder="请输入课程号作为标识">
             <label for="name">课程名:</label>
-              <input type="text" class="form-control" id="m_name" placeholder="请输入课程名">
+              <input type="text" class="form-control" id="m_courseName" placeholder="请输入课程名">
               <label for="name">学分:</label>
-              <input type="text" class="form-control" id="m_credit" placeholder="请输入学分">
+              <input type="text" class="form-control" id="m_xueFen" placeholder="请输入学分">
              <label for="name">可选人数:</label>
-              <input type="text" class="form-control" id="m_num" placeholder="请输入可选人数">  
+              <input type="text" class="form-control" id="m_mostSNum" placeholder="请输入可选人数">  
          </div>
          </form>
          <div class="modal-footer">
@@ -92,10 +92,10 @@ $(document).ready(function(){
 	$('#btnEdit').click(function()
 	{
 		var data =    { 
-						courseCode:$("#m_code").val(),
-						courseName:$("#m_name").val(),
-						xueFen:$("#m_credit").val(),
-						mostSNum:$("#m_num").val()
+						courseCode:$("#m_courseCode").val(),
+						courseName:$("#m_courseName").val(),
+						xueFen:$("#m_xueFen").val(),
+						mostSNum:$("#m_mostSNum").val()
 	}
 		$.ajax({
 	  	  url : 'editUser',
